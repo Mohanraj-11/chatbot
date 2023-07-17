@@ -10,14 +10,15 @@ function talk() {
         "Thank you": "You're welcome! If you have any more questions, feel free to ask.",
         "Bye": "Okay! Have a great day. Goodbye!"
     };
-
-    var userInput = document.getElementById("userBox").value;
-    var chatLog = document.getElementById("chatLog");
-    chatLog.innerHTML += "You: " + userInput + "<br>";
-
-    if (userInput in knowledge) {
-        chatLog.innerHTML += "Bot: " + knowledge[userInput] + "<br>";
+    var user = document.getElementById("userBox").value;
+    document.getElementById("chatLog").innerHTML = user + "<br>";
+    if (user in know) {
+        document.getElementById("chatLog").innerHTML = know[user] + "<br>";
     } else {
-        chatLog.innerHTML += "Bot: Sorry, I didn't understand your question.<br>";
+        document.getElementById("chatLog").innerHTML =
+            "Sorry,I didn't understand <br>";
     }
 }
+
+
+    
