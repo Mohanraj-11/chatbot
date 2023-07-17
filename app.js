@@ -12,13 +12,9 @@ function talk() {
     };
     var user = document.getElementById("userBox").value;
     document.getElementById("chatLog").innerHTML = user + "<br>";
-    if (user in know) {
-        document.getElementById("chatLog").innerHTML = know[user] + "<br>";
+    if (user in knowledge) {
+        document.getElementById("chatLog").innerHTML += knowledge[user] + "<br>";
     } else {
-        document.getElementById("chatLog").innerHTML =
-            "Sorry,I didn't understand <br>";
+        document.getElementById("chatLog").innerHTML += "Sorry, I didn't understand.<br>";
     }
 }
-
-
-    
