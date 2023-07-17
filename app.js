@@ -1,43 +1,23 @@
-document.addEventListener('DOMContentLoaded', function() {
-    var input = document.getElementById('user-input');
-    var log = document.getElementById('chat-log');
-    var button = document.getElementById('send-button');
+function talk() {
+    var knowledge = {
+        "Who are you": "Hello, I am the chatbot of S.A. Engineering college.",
+        "How are you": "I'm doing good, thank you! How can I assist you today?",
+        "What can I do for you": "I can provide information about courses, admission, scholarships, and contact details of our college. Feel free to ask!",
+        "Courses": "Our college offers a wide range of courses including Computer Science, Electronics and Communication Engineering, Mechanical Engineering, Civil Engineering, Electrical and Electronics Engineering, and Information Technology at the undergraduate level. We also have postgraduate courses in Computer Science, Electronics and Communication Engineering, and Business Administration.",
+        "Admission": "To apply for admission, please visit our college website and follow the instructions in the admissions section.",
+        "Scholarships": "We have various scholarships available for eligible students. You can find more information on our college website under the scholarships section.",
+        "Contact": "You can contact our college office at +1-123-456-7890 or send an email to info@saengineeringcollege.com.",
+        "Thank you": "You're welcome! If you have any more questions, feel free to ask.",
+        "Bye": "Okay! Have a great day. Goodbye!"
+    };
 
-    button.addEventListener('click', function() {
-        var userMessage = input.value;
-        if (userMessage !== '') {
-            appendMessage('You: ' + userMessage);
-            var botMessage = getBotResponse(userMessage);
-            appendMessage('Bot: ' + botMessage);
-            input.value = '';
-        }
-    });
+    var userInput = document.getElementById("userBox").value;
+    var chatLog = document.getElementById("chatLog");
+    chatLog.innerHTML += "You: " + userInput + "<br>";
 
-    function appendMessage(message) {
-        var messageElement = document.createElement('p');
-        messageElement.textContent = message;
-        log.appendChild(messageElement);
-        log.scrollTop = log.scrollHeight;
+    if (userInput in knowledge) {
+        chatLog.innerHTML += "Bot: " + knowledge[userInput] + "<br>";
+    } else {
+        chatLog.innerHTML += "Bot: Sorry, I didn't understand your question.<br>";
     }
-
-    function getBotResponse(message) {
-        var response;
-        
-        // Checking for different user inputs and generating appropriate bot responses
-        if (message.toLowerCase().includes('hello') || message.toLowerCase().includes('hi')) {
-            response = 'Hello! How can I assist you?';
-        } else if (message.toLowerCase().includes('courses') || message.toLowerCase().includes('programs')) {
-            response = 'We offer a wide range of programs including Computer Science, Business Administration, and Psychology. Which program are you interested in?';
-        } else if (message.toLowerCase().includes('admission') || message.toLowerCase().includes('apply')) {
-            response = 'To apply for admission, please visit our college website and follow the instructions in the admissions section.';
-        } else if (message.toLowerCase().includes('scholarships') || message.toLowerCase().includes('financial aid')) {
-            response = 'We have various scholarships and financial aid options available. You can find more information on our college website under the financial aid section.';
-        } else if (message.toLowerCase().includes('contact') || message.toLowerCase().includes('information')) {
-            response = 'You can contact our college office at +1-123-456-7890 or send an email to info@college.com.';
-        } else {
-            response = "I'm sorry, but I don't have information about that. Is there anything else I can assist you with?";
-        }
-
-        return response;
-    }
-});
+}
