@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
         } else if (message.toLowerCase().includes('contact') || message.toLowerCase().includes('information')) {
             response = 'You can contact our college office at +1-123-456-7890 or send an email to info@college.com.';
         } else {
-            response = 'I'm sorry, but I don't have information about that. Is there anything else I can assist you with?';
+            response = "I'm sorry, but I don't have information about that. Is there anything else I can assist you with?";
         }
 
         return response;
